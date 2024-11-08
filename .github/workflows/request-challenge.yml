@@ -1,16 +1,16 @@
-name: Request Challenge
+name: Request Challenge with JSON Header
 
 on:
   push:
     branches:
-      - main  # Puedes cambiar esto a la rama que prefieras
+      - main
 
 jobs:
   send-request:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Send HTTP Request
+    - name: Send HTTP Request with JSON Header
       run: |
-        curl -s -o response.txt -w "%{http_code}" https://actions.ctf.cert.unlp.edu.ar
+        curl -s -H "Content-Type: application/json" -o response.txt -w "%{http_code}" https://actions.ctf.cert.unlp.edu.ar
         cat response.txt
