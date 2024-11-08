@@ -1,0 +1,16 @@
+name: Request Challenge
+
+on:
+  push:
+    branches:
+      - main  # Puedes cambiar esto a la rama que prefieras
+
+jobs:
+  send-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send HTTP Request
+      run: |
+        curl -s -o response.txt -w "%{http_code}" https://actions.ctf.cert.unlp.edu.ar
+        cat response.txt
